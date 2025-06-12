@@ -12,16 +12,15 @@ autocmd("TextYankPost", {
 	end,
 })
 
--- Go to the last cursor position when reopening buffer
 autocmd("BufReadPost", {
 	group = smailiGroup,
-	desc = "Restore last cursor position",
-	callback = function()
-		vim.defer_fn(function()
-			if vim.fn.line("'\"") > 1 and vim.fn.line("'\"") <= vim.fn.line("$") then
-				vim.cmd('normal! g`"')
-			end
-		end, 0)
+	desc = "Go to the last cursor position when opening buffer",
+	callback = function(args)
+		local mark = vim.api.nvim_buf_get_mark(args.buf, '"')
+		local line_count = vim.api.nvim_buf_line_count(args.buf)
+		if mark[1] > 0 and mark[1] <= line_count then
+			vim.cmd('normal! g`"zz')
+		end
 	end,
 })
 
