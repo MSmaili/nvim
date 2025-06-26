@@ -1,13 +1,21 @@
 -- Toggle virtual_text
-local virtual_text_enabled = false
+local virtual_text_enabled = Custom.lsp.diagnostic.virtual_text_enabled
+local virtual_line_enabled = Custom.lsp.diagnostic.virtual_line_enabled
 
 function ToggleVirtualText()
 	virtual_text_enabled = not virtual_text_enabled
 	vim.diagnostic.config({
 		virtual_text = virtual_text_enabled,
-		virtual_lines = virtual_text_enabled,
 	})
 	print("Virtual Text: " .. (virtual_text_enabled and "On" or "Off"))
+end
+
+function ToggleVirtualLines()
+	virtual_line_enabled = not virtual_line_enabled
+	vim.diagnostic.config({
+		virtual_lines = virtual_line_enabled,
+	})
+	print("Virtual line: " .. (virtual_line_enabled and "On" or "Off"))
 end
 
 return function(bufnr)
@@ -63,7 +71,8 @@ return function(bufnr)
 				buffer = bufnr,
 			},
 			["gI"] = { ":FzfLua lsp_implementations<CR>", desc = "[G]oto [I]mplementation", buffer = bufnr },
-			["<leader>uv"] = { ":lua ToggleVirtualText()<CR>", desc = "Toggle Virtual Text", buffer = bufnr },
+			["<leader>uvt"] = { ":lua ToggleVirtualText()<CR>", desc = "Toggle Virtual Text", buffer = bufnr },
+			["<leader>uvl"] = { ":lua ToggleVirtualLines()<CR>", desc = "Toggle Virtual Text", buffer = bufnr },
 		},
 	}
 

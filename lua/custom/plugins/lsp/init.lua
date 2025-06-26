@@ -126,13 +126,13 @@ return {
 			----------------------------------
 			local signs = { Error = " ", Warn = " ", Hint = "󰠠 ", Info = " " }
 			vim.diagnostic.config({
-				-- virtual_text = {
-				-- 	spacing = 4,
-				-- 	source = "if_many",
-				-- 	prefix = "●",
-				-- },
+				virtual_text = {
+					spacing = 4,
+					source = "if_many",
+					prefix = "●",
+				},
 				underline = true,
-				virtual_lines = true,
+				virtual_lines = Custom.lsp.diagnostic.virtual_line_enabled,
 				update_in_insert = false,
 				document_highlight = {
 					enabled = true,

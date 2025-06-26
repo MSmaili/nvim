@@ -4,6 +4,12 @@ Custom = {
 		name = "catppuccin",
 	},
 	explorer = {},
+	lsp = {
+		diagnostic = {
+			virtual_text_enabled = true,
+			virtual_line_enabled = false,
+		},
+	},
 }
 
 -- Set key-map by table
