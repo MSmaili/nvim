@@ -46,6 +46,7 @@ return {
 			"css",
 			"scss",
 			"jsdoc",
+			"robot",
 			"astro",
 			"go",
 			"gomod",

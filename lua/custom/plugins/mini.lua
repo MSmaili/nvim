@@ -19,7 +19,7 @@ local function_surround_config = {
 
 return {
 	{
-		"echasnovski/mini.ai",
+		"nvim-mini/mini.ai",
 		dependencies = { "nvim-treesitter/nvim-treesitter-textobjects", branch = "main" },
 		opts = function()
 			local ai = require("mini.ai")
@@ -54,13 +54,13 @@ return {
 		event = { "BufReadPost" },
 	},
 	{
-		"echasnovski/mini.bracketed",
+		"nvim-mini/mini.bracketed",
 		version = "*",
 		opts = {},
 		keys = { { "[" }, { "]" } },
 	},
 	{
-		"echasnovski/mini.hipatterns",
+		"nvim-mini/mini.hipatterns",
 		event = "BufReadPost",
 		opts = function()
 			local highlighters = {}
@@ -75,7 +75,7 @@ return {
 		end,
 	},
 	{
-		"echasnovski/mini.surround",
+		"nvim-mini/mini.surround",
 		version = "*",
 		opts = {
 			search_method = "cover_or_next",
@@ -124,13 +124,13 @@ return {
 		keys = { { "s", mode = { "n", "v", "x" } } },
 	},
 	{
-		"echasnovski/mini.splitjoin",
+		"nvim-mini/mini.splitjoin",
 		version = "*",
 		opts = {},
 		keys = { { "gS" } },
 	},
 	{
-		"echasnovski/mini.icons",
+		"nvim-mini/mini.icons",
 		opts = {
 			file = {
 				[".eslintrc.js"] = { glyph = "󰱺", hl = "MiniIconsYellow" },
@@ -162,7 +162,7 @@ return {
 		end,
 	},
 	{
-		"echasnovski/mini.bufremove",
+		"nvim-mini/mini.bufremove",
 		keys = {
 			{
 				"<leader>bd",
@@ -192,5 +192,5 @@ return {
 			},
 		},
 	},
-	{ "echasnovski/mini.pairs", opts = {}, event = { "InsertEnter" } },
+	{ "nvim-mini/mini.pairs", opts = {}, event = { "InsertEnter" } },
 }
