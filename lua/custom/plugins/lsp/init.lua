@@ -6,9 +6,8 @@ return {
 		dependencies = {
 			{ "mason-org/mason.nvim", opts = { ui = { border = "rounded" } }, build = ":MasonUpdate" },
 			"mason-org/mason-lspconfig.nvim",
-			"echasnovski/mini.icons",
+			"nvim-mini/mini.icons",
 			"WhoIsSethDaniel/mason-tool-installer.nvim",
-			-- { "j-hui/fidget.nvim", opts = {} },
 			"b0o/SchemaStore.nvim",
 			"rrethy/vim-illuminate",
 		},
@@ -19,6 +18,7 @@ return {
 				"vimls",
 				"cssls",
 				"astro",
+				"robotframework-lsp",
 			},
 			tools = {
 				"prettierd",
