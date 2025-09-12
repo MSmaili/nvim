@@ -31,7 +31,7 @@ local options = {
 	------------------------------
 	scrolloff = 8, -- minimal number of screen lines to keep above and below the cursor
 	sidescrolloff = 8, -- minimal number of screen columns either side of cursor if wrap is `false`
-	wrap = true, -- display lines as one long line
+	wrap = false, -- display lines as one long line
 	linebreak = true, -- companion to wrap, don't split words
 	syntax = "enable",
 	whichwrap = "bs<>[]hl", -- which "horizontal" keys are allowed to travel to prev/next line
