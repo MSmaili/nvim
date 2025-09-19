@@ -2,7 +2,8 @@
 
 - A personal neovim configuration
 
-![image](https://github.com/MuhametSmaili/nvim/assets/51492002/adddeacf-b233-478a-bcc8-071d9f2ee32d)
+<img width="2874" height="1620" alt="image" src="https://github.com/user-attachments/assets/2c110a4b-cfba-4273-885f-c1ecaaf8d396" />
+
 
 ## Required packages:
 
