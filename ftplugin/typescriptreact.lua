@@ -1,8 +1,6 @@
 -- Automatically end a self-closing tag when pressing /
 vim.keymap.set("i", "/", function()
-	local ts_utils = require("nvim-treesitter.ts_utils")
-
-	local node = ts_utils.get_node_at_cursor()
+	local node = vim.treesitter.get_node()
 	if not node then
 		return "/"
 	end
