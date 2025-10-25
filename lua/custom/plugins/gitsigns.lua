@@ -18,6 +18,7 @@ local function keymaps()
 			["<leader>gtd"] = { gitsigns.toggle_deleted, desc = "Git toggle deleted" },
 			["<leader>gts"] = { gitsigns.toggle_signs, desc = "Git toggle signs" },
 			["<leader>gtw"] = { gitsigns.toggle_word_diff, desc = "Git toggle word diff" },
+			["<leader>gtb"] = { gitsigns.toggle_current_line_blame, desc = "Git toggle current line blame" },
 		},
 	}
 end

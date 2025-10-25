@@ -63,3 +63,13 @@ autocmd("FileType", {
 		vim.opt.formatoptions:remove({ "c", "r", "o" })
 	end,
 })
+
+--- auto update the highlight style on colorscheme change
+vim.api.nvim_create_autocmd({ "ColorScheme" }, {
+	pattern = { "*" },
+	callback = function()
+		vim.api.nvim_set_hl(0, "IlluminatedWordText", { link = "LspReferenceText" })
+		vim.api.nvim_set_hl(0, "IlluminatedWordRead", { link = "LspReferenceRead" })
+		vim.api.nvim_set_hl(0, "IlluminatedWordWrite", { link = "LspReferenceWrite" })
+	end,
+})

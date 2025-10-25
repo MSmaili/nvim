@@ -6,7 +6,7 @@ return {
 		dependencies = {
 			{ "mason-org/mason.nvim", opts = { ui = { border = "rounded" } }, build = ":MasonUpdate" },
 			"mason-org/mason-lspconfig.nvim",
-			"nvim-mini/mini.icons",
+			"echasnovski/mini.icons",
 			"WhoIsSethDaniel/mason-tool-installer.nvim",
 			"b0o/SchemaStore.nvim",
 			"rrethy/vim-illuminate",
@@ -75,6 +75,8 @@ return {
 								})
 							end,
 						})
+
+						require("fzf-lua").register_ui_select()
 					end
 
 					----------------------------------
@@ -110,7 +112,7 @@ return {
 
 			require("mason-lspconfig").setup({
 				automatic_enable = {
-					exclude = { "eslint" },
+					exclude = { "tailwindcss" },
 				},
 				ensure_installed = {},
 			})

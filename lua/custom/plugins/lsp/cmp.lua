@@ -15,12 +15,6 @@ return {
 				debug = false,
 			},
 		},
-		{
-			"xzbdmw/colorful-menu.nvim",
-			opts = {
-				fallback_highlight = "@comment",
-			},
-		},
 	},
 	version = "1.*",
 	build = "cargo build --release",
@@ -62,42 +56,32 @@ return {
 				},
 			},
 			menu = {
-				auto_show = false,
+				auto_show = true,
 				border = "rounded",
 				-- mini icons text
 				draw = {
 					treesitter = { "lsp" },
 					columns = { { "kind_icon" }, { "label", gap = 1 } },
 					components = {
-						label = {
+						kind_icon = {
 							text = function(ctx)
-								return require("colorful-menu").blink_components_text(ctx)
+								local kind_icon, _, _ = require("mini.icons").get("lsp", ctx.kind)
+								return kind_icon
 							end,
+							-- (optional) use highlights from mini.icons
 							highlight = function(ctx)
-								return require("colorful-menu").blink_components_highlight(ctx)
+								local _, hl, _ = require("mini.icons").get("lsp", ctx.kind)
+								return hl
+							end,
+						},
+						kind = {
+							-- (optional) use highlights from mini.icons
+							highlight = function(ctx)
+								local _, hl, _ = require("mini.icons").get("lsp", ctx.kind)
+								return hl
 							end,
 						},
 					},
-					-- components = {
-					-- 	kind_icon = {
-					-- 		text = function(ctx)
-					-- 			local kind_icon, _, _ = require("mini.icons").get("lsp", ctx.kind)
-					-- 			return kind_icon
-					-- 		end,
-					-- 		-- (optional) use highlights from mini.icons
-					-- 		highlight = function(ctx)
-					-- 			local _, hl, _ = require("mini.icons").get("lsp", ctx.kind)
-					-- 			return hl
-					-- 		end,
-					-- 	},
-					-- 	kind = {
-					-- 		-- (optional) use highlights from mini.icons
-					-- 		highlight = function(ctx)
-					-- 			local _, hl, _ = require("mini.icons").get("lsp", ctx.kind)
-					-- 			return hl
-					-- 		end,
-					-- 	},
-					-- },
 				},
 			},
 		},

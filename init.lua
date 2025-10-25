@@ -25,7 +25,7 @@ require("lazy").setup({
 }, {
 	defaults = { lazy = true },
 	install = { colorscheme = { Custom.get_colorscheme(Custom.colorscheme.name) } },
-	checker = { enabled = true },
+	checker = { enabled = false },
 	change_detection = { notify = false },
 	ui = { border = "rounded" },
 	performance = {

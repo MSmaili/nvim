@@ -168,4 +168,13 @@ return {
 			},
 		},
 	},
+	{
+		"KijitoraFinch/nanode.nvim",
+		lazy = false,
+		config = function()
+			require("nanode").setup({
+				transparent = Custom.colorscheme.transparent,
+			})
+		end,
+	},
 }
