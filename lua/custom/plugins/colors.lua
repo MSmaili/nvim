@@ -177,4 +177,11 @@ return {
 			})
 		end,
 	},
+	{
+		{
+			"abhilash26/mapledark.nvim",
+			lazy = false,
+			opts = {},
+		},
+	},
 }
