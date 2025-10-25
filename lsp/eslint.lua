@@ -1,8 +1,9 @@
 ---@type vim.lsp.Config
 return {
 	cmd = { "vscode-eslint-language-server", "--stdio" },
-	autostart = false,
+	autostart = true,
 	settings = {
+		concurrency = "auto",
 		codeAction = {
 			disableRuleComment = {
 				enable = true,

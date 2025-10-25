@@ -21,6 +21,7 @@ return {
 			typescriptreact = { "prettierd", "eslint_d" },
 			astro = { "prettierd", "prettier" },
 			css = { "prettierd", "prettier" },
+			scss = { "prettierd", "prettier" },
 			html = { "prettierd", "prettier" },
 			json = { "prettierd" },
 			jsonc = { "prettierd" },

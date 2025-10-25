@@ -5,10 +5,10 @@ return {
 	config = function()
 		local lint = require("lint")
 
-		local eslint_filetypes = { "javascript", "typescript", "javascriptreact", "typescriptreact", "astro" }
-		for _, ft in ipairs(eslint_filetypes) do
-			lint.linters_by_ft[ft] = { "eslint_d" }
-		end
+		-- local eslint_filetypes = { "javascript", "typescript", "javascriptreact", "typescriptreact", "astro" }
+		-- for _, ft in ipairs(eslint_filetypes) do
+		-- 	lint.linters_by_ft[ft] = { "eslint_d" }
+		-- end
 
 		lint.linters_by_ft = vim.tbl_extend("force", lint.linters_by_ft, {
 			go = { "golangcilint" },
