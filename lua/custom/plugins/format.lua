@@ -23,6 +23,8 @@ return {
 			css = { "prettierd", "prettier" },
 			scss = { "prettierd", "prettier" },
 			html = { "prettierd", "prettier" },
+			http = { "prettierd", "prettier" },
+			rest = { "prettierd", "prettier" },
 			json = { "prettierd" },
 			jsonc = { "prettierd" },
 			-- yaml = { "prettierd", "prettier" },
