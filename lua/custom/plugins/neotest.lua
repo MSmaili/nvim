@@ -8,38 +8,34 @@ return {
 			"antoinemadec/FixCursorHold.nvim",
 			"nvim-treesitter/nvim-treesitter",
 			"nvim-neotest/neotest-jest",
+			"marilari88/neotest-vitest",
 
 			"nvim-neotest/neotest-plenary",
 			"nvim-neotest/neotest-vim-test",
 
 			{
 				"fredrikaverpil/neotest-golang",
-				dependencies = {
-					{
-						"leoluz/nvim-dap-go",
-						opts = {},
-					},
-				},
-				branch = "main",
+				version = "*", -- Optional, but recommended; track releases
+				build = function()
+					vim.system({ "go", "install", "gotest.tools/gotestsum@latest" }):wait() -- Optional, but recommended
+				end,
 			},
 		},
 		opts = function(_, opts)
 			opts.adapters = opts.adapters or {}
 			opts.adapters["neotest-golang"] = {
-				go_test_args = {
-					"-v",
-					"-race",
-					"-coverprofile=" .. vim.fn.getcwd() .. "/coverage.out",
-				},
+				runner = "gotestsum",
+				warn_test_name_dupes = false,
 			}
 			opts.adapters["neotest-jest"] = {
 				jestCommand = "npm test --",
-				jestConfigFile = "custom.jest.config.ts",
+				-- jestConfigFile = "custom.jest.config.ts",
 				env = { CI = true },
 				cwd = function()
 					return vim.fn.getcwd()
 				end,
 			}
+			opts.adapters["neotest-vitest"] = {}
 		end,
 		config = function(_, opts)
 			if opts.adapters then
