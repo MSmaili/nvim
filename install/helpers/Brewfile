@@ -1,0 +1,16 @@
+# CLI tools
+brew "fzf"
+brew "fd"
+brew "bat"
+brew "ripgrep"
+brew "jq"
+brew "lazygit"
+brew "lazydocker"
+brew "tmux"
+brew "neovim"
+brew "stow"
+brew "tree-sitter"
+
+# GUI applications
+cask "ghostty"
+cask "nikitabobko/tap/aerospace"

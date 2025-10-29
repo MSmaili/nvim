@@ -1,1 +1,2 @@
-.config/git/config.local
+# SSH private hosts
+.ssh/hosts
