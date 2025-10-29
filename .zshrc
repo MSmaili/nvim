@@ -60,7 +60,7 @@ export NVM_DIR="$HOME/.nvm"
 # ----------------------------------------
 # Display Settings
 # ----------------------------------------
-export DISPLAY=localhost:10.0
+[[ -z "$DISPLAY" ]] && export DISPLAY=localhost:10.0
 
 # ----------------------------------------
 # Functions
@@ -100,12 +100,11 @@ for file in ~/.config/zsh/*.zsh(N); do
 done
 
 
-# Custom aliases for git diffing with perview
+# Custom aliases for git diffing with preview
 gdiff() {
   preview="git diff $@ --color=always -- {-1}"
   git diff $@ --name-only | fzf -m --ansi --preview $preview
 }
-zstyle ':fzf-tab:*' use-fzf-default-opts yes
 
 # Amazon Q post block. Keep at the bottom of this file.
 [[ -f "${HOME}/Library/Application Support/amazon-q/shell/zshrc.post.zsh" ]] && builtin source "${HOME}/Library/Application Support/amazon-q/shell/zshrc.post.zsh"
