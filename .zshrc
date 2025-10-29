@@ -19,7 +19,7 @@ fi
 # ----------------------------------------
 # Oh-My-Zsh Setup
 # ----------------------------------------
-export ZSH="$HOME/.oh-my-zsh"
+export ZSH="${ZSH:-$HOME/.oh-my-zsh}"
 
 ZSH_THEME="powerlevel10k/powerlevel10k"
 # Plugins
@@ -36,11 +36,13 @@ source $ZSH/oh-my-zsh.sh
 # ----------------------------------------
 # FZF Configuration
 # ----------------------------------------
-export FZF_DEFAULT_COMMAND="fd --type f --color=always"
-export FZF_DEFAULT_OPTS="--ansi"
-export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+if command -v fd >/dev/null 2>&1; then
+  export FZF_DEFAULT_COMMAND="fd --type f --color=always"
+  export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+fi
 
 export FZF_DEFAULT_OPTS="\
+--ansi \
 --color=bg+:#313244,bg:#1e1e2e,spinner:#f5e0dc,hl:#f38ba8,\
 fg:#cdd6f4,header:#f38ba8,info:#cba6f7,pointer:#f5e0dc,\
 marker:#f5e0dc,fg+:#cdd6f4,prompt:#cba6f7,hl+:#f38ba8"
@@ -64,6 +66,11 @@ export DISPLAY=localhost:10.0
 # Functions
 # ----------------------------------------
 function lg {
+  if ! command -v lazygit >/dev/null 2>&1; then
+    echo "lazygit not installed"
+    return 1
+  fi
+  
   local git_dir
   git_dir=$(git rev-parse --git-dir 2>/dev/null)
   if [[ $? -eq 0 ]]; then
@@ -73,21 +80,23 @@ function lg {
       rm "$lock_file"
     fi
   fi
-  command lazygit "$@"  # <--- NOTICE: 'command' bypasses the alias
+  command lazygit "$@"
 }
 
 # ----------------------------------------
 # Aliases
 # ----------------------------------------
 alias vi="nvim"
-alias ld="lazydocker"
+command -v lazydocker >/dev/null 2>&1 && alias ld="lazydocker"
 alias t="tmux a"
-alias cat='bat -pp'
-alias ovi='nvim "$(fzf --preview="bat --style=numbers --color=always {}" --height=40% --reverse)"'
+command -v bat >/dev/null 2>&1 && alias cat='bat -pp'
+if command -v fzf >/dev/null 2>&1 && command -v bat >/dev/null 2>&1; then
+  alias ovi='nvim "$(fzf --preview="bat --style=numbers --color=always {}" --height=40% --reverse)"'
+fi
 
-# load modular configs from ~/.zshrc.*
-for file in ~/.config/zsh/*.zsh; do
-  source "$file"
+# load modular configs from ~/.config/zsh/
+for file in ~/.config/zsh/*.zsh(N); do
+  [[ -r "$file" ]] && source "$file"
 done
 
 
