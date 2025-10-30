@@ -20,6 +20,7 @@ return {
 			javascriptreact = { "prettierd", "eslint_d" },
 			typescriptreact = { "prettierd", "eslint_d" },
 			astro = { "prettierd", "prettier" },
+			bash = { "beautysh" },
 			css = { "prettierd", "prettier" },
 			scss = { "prettierd", "prettier" },
 			html = { "prettierd", "prettier" },

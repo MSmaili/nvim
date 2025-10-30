@@ -22,6 +22,7 @@ return {
 			},
 			tools = {
 				"prettierd",
+				"beautysh",
 				"eslint_d",
 				"goimports",
 				"gotests",
