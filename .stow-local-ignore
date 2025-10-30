@@ -27,3 +27,6 @@ _darcs
 ^/install\.sh
 ^/Brewfile
 ^/\.stow-local-ignore
+
+# Ignore local Git configuration
+^config/git/config\.local$
