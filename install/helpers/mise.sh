@@ -17,5 +17,6 @@ install_mise_languages() {
     mise use -g go@latest
     mise use -g node@lts
     mise use -g rust@stable
-    # mise use -g bun@lts
+    # mise use -g bun@latest
+    mise use -g java@21
 }

@@ -110,6 +110,4 @@ gdiff() {
 [[ -f "${HOME}/Library/Application Support/amazon-q/shell/zshrc.post.zsh" ]] && builtin source "${HOME}/Library/Application Support/amazon-q/shell/zshrc.post.zsh"
 
 # mise
-echo 'eval "$(~/.local/bin/mise activate zsh)"' >> ~/.zshrc
-eval "$(~/.local/bin/mise activate zsh)"
 eval "$(~/.local/bin/mise activate zsh)"
