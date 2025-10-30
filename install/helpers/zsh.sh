@@ -33,28 +33,36 @@ install_zsh() {
     sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
   fi
 
-  # Install Powerlevel10k theme
-  local ZSH_CUSTOM=${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}
-  if [[ ! -d "$ZSH_CUSTOM/themes/powerlevel10k" ]]; then
-    echo "⚡ Installing Powerlevel10k..."
-    git clone --depth=1 https://github.com/romkatv/powerlevel10k.git "$ZSH_CUSTOM/themes/powerlevel10k"
-  fi
-
-  # Install useful plugins
-  local plugins_dir="$ZSH_CUSTOM/plugins"
-  mkdir -p "$plugins_dir"
-
-  declare -A plugins=(
-    ["zsh-autosuggestions"]="https://github.com/zsh-users/zsh-autosuggestions"
-    ["zsh-syntax-highlighting"]="https://github.com/zsh-users/zsh-syntax-highlighting"
-  )
-
-  for plugin in "${!plugins[@]}"; do
-    if [[ ! -d "$plugins_dir/$plugin" ]]; then
-      echo "🔌 Installing $plugin..."
-      git clone "${plugins[$plugin]}" "$plugins_dir/$plugin"
+  test() {
+    # Install Powerlevel10k theme
+    local ZSH_CUSTOM=${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}
+    if [[ ! -d "$ZSH_CUSTOM/themes/powerlevel10k" ]]; then
+      echo "⚡ Installing Powerlevel10k..."
+      git clone --depth=1 https://github.com/romkatv/powerlevel10k.git "$ZSH_CUSTOM/themes/powerlevel10k"
     fi
-  done
+
+    # Install useful plugins
+    local plugins_dir="$ZSH_CUSTOM/plugins"
+    mkdir -p "$plugins_dir"
+
+    # Define plugins as simple arrays
+    local plugin_names=("zsh-autosuggestions" "zsh-syntax-highlighting")
+    local plugin_urls=(
+      "https://github.com/zsh-users/zsh-autosuggestions"
+      "https://github.com/zsh-users/zsh-syntax-highlighting"
+    )
+
+    for i in "${!plugin_names[@]}"; do
+      local plugin="${plugin_names[$i]}"
+      local url="${plugin_urls[$i]}"
+
+      if [[ ! -d "$plugins_dir/$plugin" ]]; then
+        echo "🔌 Installing $plugin..."
+        git clone "$url" "$plugins_dir/$plugin"
+      fi
+    done
+  }
+  test
 
   echo "✅ Zsh configuration complete!"
 }
