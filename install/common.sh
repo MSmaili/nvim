@@ -11,7 +11,7 @@ mkdir -p ~/.config/zsh ~/.config/tmux
 
 install_zsh
 install_tmux_plugins
-# install_mise_languages
+install_mise_languages
 
 if command -v stow &>/dev/null; then
   echo "🔗 Linking dotfiles..."

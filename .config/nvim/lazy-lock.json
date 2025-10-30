@@ -21,7 +21,7 @@
   "kanso.nvim": { "branch": "main", "commit": "c2525ebafa73c1860301716d9a17e3f07f5038b8" },
   "kubectl.nvim": { "branch": "main", "commit": "5d66eb8d57cc8ad3d5ec78ee63fd075cc00cabec" },
   "kulala.nvim": { "branch": "main", "commit": "9a9308b664f71159f1c150e8cfb18541b143a9e9" },
-  "lazy.nvim": { "branch": "main", "commit": "f0f5bbb9e5bfae5e6468f9359ffea3d151418176" },
+  "lazy.nvim": { "branch": "main", "commit": "db067881fff0fd4be8c00e5bde7492e0e1c77a2f" },
   "lualine.nvim": { "branch": "master", "commit": "3946f0122255bc377d14a59b27b609fb3ab25768" },
   "mapledark.nvim": { "branch": "main", "commit": "f26fdf0adefeff790e73624b1663ae8a76a261d3" },
   "mason-lspconfig.nvim": { "branch": "main", "commit": "3590d66effccc7376d8c3dbe45e8291f9fed2843" },

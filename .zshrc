@@ -70,7 +70,7 @@ function lg {
     echo "lazygit not installed"
     return 1
   fi
-  
+
   local git_dir
   git_dir=$(git rev-parse --git-dir 2>/dev/null)
   if [[ $? -eq 0 ]]; then
@@ -108,3 +108,8 @@ gdiff() {
 
 # Amazon Q post block. Keep at the bottom of this file.
 [[ -f "${HOME}/Library/Application Support/amazon-q/shell/zshrc.post.zsh" ]] && builtin source "${HOME}/Library/Application Support/amazon-q/shell/zshrc.post.zsh"
+
+# mise
+echo 'eval "$(~/.local/bin/mise activate zsh)"' >> ~/.zshrc
+eval "$(~/.local/bin/mise activate zsh)"
+eval "$(~/.local/bin/mise activate zsh)"
