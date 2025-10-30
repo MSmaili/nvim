@@ -14,12 +14,12 @@ install_tmux_plugins
 install_mise_languages
 
 if command -v stow &>/dev/null; then
-  echo "🔗 Linking dotfiles..."
-  cd "$BASE_DIR/.."
-  # Stow everything except ignored files (see .stow-local-ignore)
-  stow -vSt "$HOME" . 2>/dev/null || echo "⚠️ Some files already linked"
+    echo "🔗 Linking dotfiles..."
+    cd "$BASE_DIR/.."
+    # Stow everything except ignored files (see .stow-local-ignore)
+    stow -vSt "$HOME" . 2>/dev/null || echo "⚠️ Some files already linked"
 else
-  echo "⚠️ stow not installed, skipping linking."
+    echo "⚠️ stow not installed, skipping linking."
 fi
 
 echo "✅ Common setup complete!"
