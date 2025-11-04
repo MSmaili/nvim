@@ -25,6 +25,7 @@ return {
 				"beautysh",
 				"eslint_d",
 				"goimports",
+				"sonarlint-language-server",
 				"gotests",
 				"golangci-lint",
 				"yamllint",
