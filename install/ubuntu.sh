@@ -8,3 +8,5 @@ sudo apt update
 sudo apt install -y git curl stow zsh tmux
 
 bash "$BASE_DIR/common.sh"
+
+cargo install git-delta

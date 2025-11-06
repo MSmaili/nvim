@@ -22,8 +22,5 @@ else
     echo "⚠️ stow not installed, skipping linking."
 fi
 
-echo "Sourcing fzf keybinding"
-source <(fzf --zsh)
-
 
 echo "✅ Common setup complete!"

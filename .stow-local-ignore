@@ -23,6 +23,7 @@ _darcs
 ^/COPYING
 
 # Dotfiles installation files
+^install\.sh$
 ^/install
 ^/install\.sh
 ^/Brewfile

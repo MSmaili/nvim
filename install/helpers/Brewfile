@@ -2,6 +2,7 @@
 brew "fzf"
 brew "fd"
 brew "bat"
+brew "git-delta"
 brew "ripgrep"
 brew "jq"
 brew "lazygit"

@@ -4,6 +4,6 @@ set -e
 echo "🦋 Arch setup..."
 BASE_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
-sudo pacman -Sy --noconfirm git curl stow zsh tmux
+sudo pacman -Sy --noconfirm git curl stow zsh tmux git-delta
 
 bash "$BASE_DIR/common.sh"
