@@ -10,3 +10,5 @@ echo $BASE_DIR
 brew_bundle_install "$BASE_DIR/Brewfile"
 
 bash "$BASE_DIR/../common.sh"
+
+bash "$BASE_DIR/macos_settings.sh"
