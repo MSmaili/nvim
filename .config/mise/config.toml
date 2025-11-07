@@ -1,4 +1,5 @@
 [tools]
 go = "latest"
-node = "lts"
-rust = "stable"
+java = "21"
+node = "latest"
+rust = "nightly"

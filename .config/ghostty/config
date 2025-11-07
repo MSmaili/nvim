@@ -10,7 +10,7 @@ macos-window-shadow = true
 #bold-is-bright = true
 
 font-family = "MonoLisa Variable"
-font-size = 21
+font-size = 17
 font-variation = wght=400
 font-variation-bold = wght=500
 #font-thicken = true
