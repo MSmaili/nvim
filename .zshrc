@@ -2,23 +2,27 @@
 __ZSHRC_LOADED=1
 
 # ------------------------------------------------------------
+# Modular Configs
+# ------------------------------------------------------------
+for file in ~/.config/zsh/*.zsh(N); do
+  [[ -r "$file" ]] && source "$file"
+done
+
+# ------------------------------------------------------------
 # Zsh Options & Environment Variables
 # ------------------------------------------------------------
 setopt autocd              # Type directory name to cd
 setopt correct             # Auto-correct minor typos
-setopt histignoredups      # No duplicate history entries
-setopt sharehistory        # Shared history across sessions
 HISTSIZE=5000
 HISTFILE=~/.zsh_history
 SAVEHIST=$HISTSIZE
-HISTDUP=erase
 HISTTIMEFORMAT="%F %T "
-setopt appendhistory
-setopt hist_ignore_space
-setopt hist_ignore_all_dups
-setopt hist_save_no_dups
-setopt hist_ignore_dups
-setopt hist_find_no_dups
+setopt sharehistory        # share across sessions
+setopt appendhistory       # append instead of overwrite
+setopt hist_ignore_space   # ignore commands starting with space
+setopt hist_ignore_dups    # ignore all duplicates
+setopt hist_find_no_dups   # ignore duplicates during search
+HISTDUP=erase              # optional, reinforce duplicate removal
 
 # When deleting with <C-w>, delete file names at a time
 WORDCHARS=${WORDCHARS/\/}
@@ -87,8 +91,6 @@ zinit cdreplay -q
 bindkey -e
 bindkey '^p' history-search-backward
 bindkey '^n' history-search-forward
-bindkey '^[w' kill-region
-
 
 # ------------------------------------------------------------
 # FZF Configuration
@@ -154,7 +156,7 @@ alias gl='git pull'
 alias gco='git checkout'
 alias gb='git branch'
 alias glog='git log --oneline --graph --decorate --all'
-alias gd='git diff'
+alias gprom ='git pull --rebase origin $(git_main_branch)'
 
 # Docker aliases
 alias dps='docker ps --format "table {{.Names}}\t{{.Status}}\t{{.Ports}}"'
@@ -267,11 +269,3 @@ fkill() {
 # Quick project navigation (adjust path to your projects directory)
 export PROJECTS="$HOME/projects"
 alias p='cd $PROJECTS'
-
-
-# ------------------------------------------------------------
-# Modular Configs
-# ------------------------------------------------------------
-for file in ~/.config/zsh/*.zsh(N); do
-  [[ -r "$file" ]] && source "$file"
-done
