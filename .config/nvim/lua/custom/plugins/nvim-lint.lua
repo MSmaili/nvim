@@ -15,6 +15,7 @@ return {
 			yaml = { "yamllint" },
 			proto = { "protolint" },
 			json = {},
+			zsh = { "zsh" },
 			markdown = {},
 		})
 
