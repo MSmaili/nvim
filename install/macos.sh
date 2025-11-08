@@ -11,4 +11,8 @@ brew_bundle_install "$BASE_DIR/Brewfile"
 
 bash "$BASE_DIR/../common.sh"
 
-bash "$BASE_DIR/macos_settings.sh"
+if  ask_yes_no "Set macos_settings?"; then
+    bash "$BASE_DIR/macos_settings.sh"
+else
+    skip_with_message "Skipping default macos_settings."
+fi

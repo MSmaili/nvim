@@ -7,6 +7,8 @@ echo "🚀 Setting up dotfiles..."
 OS="$(uname -s)"
 BASE_DIR="$(cd "$(dirname "$0")" && pwd)"
 
+source "$BASE_DIR/install/helpers/prompt.sh"
+
 if [[ "$OS" == "Darwin" ]]; then
     DISTRO="macos"
 elif [[ "$OS" == "Linux" ]]; then

@@ -11,7 +11,11 @@ mkdir -p ~/.config/zsh ~/.config/tmux
 
 install_zsh
 install_tmux_plugins
-install_mise_languages
+if ask_yes_no "Install/update mise?"; then
+    install_mise_languages
+else
+    skip_with_message "Skipping Mise installation."
+fi
 
 if command -v stow &>/dev/null; then
     echo "🔗 Linking dotfiles..."
@@ -21,6 +25,5 @@ if command -v stow &>/dev/null; then
 else
     echo "⚠️ stow not installed, skipping linking."
 fi
-
 
 echo "✅ Common setup complete!"

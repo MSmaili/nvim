@@ -5,8 +5,6 @@ echo "🐧 Ubuntu setup..."
 BASE_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
 sudo apt update
-sudo apt install -y git curl stow zsh tmux
+sudo apt install -y git curl stow zsh tmux fzf
 
 bash "$BASE_DIR/common.sh"
-
-cargo install git-delta

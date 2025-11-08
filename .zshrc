@@ -156,7 +156,7 @@ alias gl='git pull'
 alias gco='git checkout'
 alias gb='git branch'
 alias glog='git log --oneline --graph --decorate --all'
-alias gprom ='git pull --rebase origin $(git_main_branch)'
+alias gpro='git pull --rebase origin'
 
 # Docker aliases
 alias dps='docker ps --format "table {{.Names}}\t{{.Status}}\t{{.Ports}}"'

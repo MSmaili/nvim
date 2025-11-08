@@ -1,16 +1,13 @@
 #!/usr/bin/env bash
 set -e
 
+BASE_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+source "$BASE_DIR/prompt.sh"
+
 install_mise_languages() {
     if ! command -v mise &>/dev/null; then
         echo "📦 Installing mise..."
         echo "⚠️ This will download and execute the mise installer"
-        read -p "Continue? (y/N): " -n 1 -r
-        echo
-        if [[ ! $REPLY =~ ^[Yy]$ ]]; then
-            echo "❌ Aborted."
-            return 1
-        fi
         curl -fsSL https://mise.run | sh
         export PATH="$HOME/.local/bin:$PATH"
     fi
