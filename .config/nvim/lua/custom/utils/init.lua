@@ -44,25 +44,49 @@ function Custom.set_keymappings(keymaps)
 	end
 end
 
-local persist = vim.fn.stdpath("data") .. "/colorscheme.txt"
+local themePersistFile = vim.fn.stdpath("data") .. "/colorscheme.txt"
 
--- read the file, return the first line or fallback to default  theme
+-- Read persisted theme or return fallback
 function Custom.get_colorscheme(fallback)
-	local ok, lines = pcall(vim.fn.readfile, persist)
+	local ok, lines = pcall(vim.fn.readfile, themePersistFile)
 	if ok and #lines > 0 then
 		return lines[1]
 	end
 	return fallback or "default"
 end
 
--- write the theme to disk and apply it
-function Custom.save_colorscheme(theme)
-	vim.cmd("colorscheme " .. theme)
-	pcall(vim.fn.writefile, { theme }, persist)
-	vim.notify("Colorscheme saved: " .. theme, vim.log.levels.INFO)
+-- Apply colorscheme with fallback
+function Custom.apply_colorscheme(theme)
+	vim.opt.termguicolors = true
 
-	local ok, lualine = pcall(require, "lualine")
-	if ok then
-		lualine.setup(require("custom.plugins.lualine").opts())
+	local ok = pcall(vim.cmd.colorscheme, theme)
+	if not ok then
+		-- If it fails, just use default
+		pcall(vim.cmd.colorscheme, "default")
+		return "default"
 	end
+
+	vim.cmd("redraw!")
+
+	-- Update plugins that need it
+	vim.schedule(function()
+		local ok_lualine, lualine = pcall(require, "lualine")
+		if ok_lualine then
+			lualine.setup(require("custom.plugins.lualine").opts())
+		end
+
+		-- Set custom highlights after colorscheme loads
+		vim.api.nvim_set_hl(0, "IlluminatedWordText", { link = "LspReferenceText" })
+		vim.api.nvim_set_hl(0, "IlluminatedWordRead", { link = "LspReferenceRead" })
+		vim.api.nvim_set_hl(0, "IlluminatedWordWrite", { link = "LspReferenceWrite" })
+	end)
+
+	return theme
+end
+
+-- Save and apply colorscheme
+function Custom.save_colorscheme(theme)
+	local applied = Custom.apply_colorscheme(theme)
+	pcall(vim.fn.writefile, { applied }, themePersistFile)
+	vim.notify("Colorscheme: " .. applied, vim.log.levels.INFO)
 end

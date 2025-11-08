@@ -40,20 +40,6 @@ autocmd("User", {
 	end,
 })
 
--- Set colorscheme on startup
-autocmd("VimEnter", {
-	group = smailiGroup,
-	desc = "Set custom colorscheme",
-	callback = function()
-		local ok, err = pcall(function()
-			vim.cmd.colorscheme(Custom.get_colorscheme(Custom.colorscheme.name))
-		end)
-		if not ok then
-			vim.notify("Failed to load colorscheme: " .. err, vim.log.levels.WARN)
-		end
-	end,
-})
-
 -- Disable auto-commenting on newline
 autocmd("FileType", {
 	pattern = "*",
@@ -64,30 +50,32 @@ autocmd("FileType", {
 	end,
 })
 
---- auto update the highlight style on colorscheme change
-vim.api.nvim_create_autocmd({ "ColorScheme" }, {
-	pattern = { "*" },
+-- Set colorscheme on startup
+autocmd("VimEnter", {
+	group = smailiGroup,
+	desc = "Set custom colorscheme",
 	callback = function()
-		vim.api.nvim_set_hl(0, "IlluminatedWordText", { link = "LspReferenceText" })
-		vim.api.nvim_set_hl(0, "IlluminatedWordRead", { link = "LspReferenceRead" })
-		vim.api.nvim_set_hl(0, "IlluminatedWordWrite", { link = "LspReferenceWrite" })
+		vim.defer_fn(function()
+			local theme = Custom.get_colorscheme(Custom.colorscheme.name)
+			Custom.apply_colorscheme(theme)
+		end, 50)
 	end,
 })
 
 -- open help in vertical split
-vim.api.nvim_create_autocmd("FileType", {
+autocmd("FileType", {
 	pattern = "help",
 	command = "wincmd L",
 })
 
 -- auto resize splits when the terminal's window is resized
-vim.api.nvim_create_autocmd("VimResized", {
+autocmd("VimResized", {
 	command = "wincmd =",
 })
 
 -- Rename file with lsp support nvim-tree
 local prev = { new_name = "", old_name = "" } -- Prevents duplicate events
-vim.api.nvim_create_autocmd("User", {
+autocmd("User", {
 	pattern = "NvimTreeSetup",
 	callback = function()
 		local events = require("nvim-tree.api").events
