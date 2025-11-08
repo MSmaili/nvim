@@ -142,6 +142,11 @@ alias vim="nvim"
 alias grep='grep --color=auto'
 alias t="tmux attach || tmux"
 
+#open btop if exists
+if command -v btop >/dev/null 2>&1; then
+  alias top="btop"
+fi
+
 # ls/eza aliases
 if command -v eza >/dev/null 2>&1; then
     alias ls='eza --icons --group-directories-first'
