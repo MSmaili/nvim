@@ -57,4 +57,21 @@ return {
 	keys = {
 		{ "<leader>e", ":NvimTreeToggle<CR>", desc = "Toggle tree" },
 	},
+	config = function(_, opts)
+		require("nvim-tree").setup(opts)
+
+		-- Resize nvim-tree float window on terminal resize
+		vim.api.nvim_create_autocmd("VimResized", {
+			callback = function()
+				local view = require("nvim-tree.view")
+				if view.is_visible() then
+					local win = view.get_winnr()
+					if win then
+						local config = float_cfg()
+						vim.api.nvim_win_set_config(win, config)
+					end
+				end
+			end,
+		})
+	end,
 }
