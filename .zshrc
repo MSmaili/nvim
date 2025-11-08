@@ -40,7 +40,7 @@ path=(
   "/usr/local/bin"
   $path
 )
-
+export XDG_CONFIG_HOME="$HOME/.config"
 
 # ------------------------------------------------------------
 # Zinit
@@ -180,7 +180,7 @@ alias kl='kubectl logs -f'
 
 # Hash directories for quick movement
 hash -d dotfiles="$HOME/dotfiles"
-hash -d conf="$HOME/.config"
+hash -d nvim="$HOME/.config/nvim"
 
 # Conditional aliases
 command -v lazydocker >/dev/null 2>&1 && alias ld="lazydocker"
