@@ -26,5 +26,6 @@ _darcs
 ^install\.sh$
 ^/install
 ^/install\.sh
+install
 ^/Brewfile
 ^/\.stow-local-ignore

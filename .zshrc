@@ -93,6 +93,13 @@ bindkey '^p' history-search-backward
 bindkey '^n' history-search-forward
 
 # ------------------------------------------------------------
+# mise
+# ------------------------------------------------------------
+if command -v mise >/dev/null 2>&1; then
+  eval "$(mise activate zsh)"
+fi
+
+# ------------------------------------------------------------
 # FZF Configuration
 # ------------------------------------------------------------
 if command -v fd >/dev/null 2>&1; then
