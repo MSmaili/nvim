@@ -73,3 +73,29 @@ vim.api.nvim_create_autocmd({ "ColorScheme" }, {
 		vim.api.nvim_set_hl(0, "IlluminatedWordWrite", { link = "LspReferenceWrite" })
 	end,
 })
+
+-- open help in vertical split
+vim.api.nvim_create_autocmd("FileType", {
+	pattern = "help",
+	command = "wincmd L",
+})
+
+-- auto resize splits when the terminal's window is resized
+vim.api.nvim_create_autocmd("VimResized", {
+	command = "wincmd =",
+})
+
+-- Rename file with lsp support nvim-tree
+local prev = { new_name = "", old_name = "" } -- Prevents duplicate events
+vim.api.nvim_create_autocmd("User", {
+	pattern = "NvimTreeSetup",
+	callback = function()
+		local events = require("nvim-tree.api").events
+		events.subscribe(events.Event.NodeRenamed, function(data)
+			if prev.new_name ~= data.new_name or prev.old_name ~= data.old_name then
+				data = data
+				Snacks.rename.on_rename_file(data.old_name, data.new_name)
+			end
+		end)
+	end,
+})
