@@ -17,7 +17,7 @@ else
     skip_with_message "Skipping Mise installation."
 fi
 
-if command -v stow &>/dev/null; then
+if has stow; then
     echo "🔗 Linking dotfiles..."
     cd "$BASE_DIR/.."
     # Stow everything except ignored files (see .stow-local-ignore)

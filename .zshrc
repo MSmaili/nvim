@@ -5,7 +5,7 @@ __ZSHRC_LOADED=1
 # Modular Configs
 # ------------------------------------------------------------
 for file in ~/.config/zsh/*.zsh(N); do
-  [[ -r "$file" ]] && source "$file"
+    [[ -r "$file" ]] && source "$file"
 done
 
 # ------------------------------------------------------------
@@ -35,10 +35,10 @@ export TERM=xterm-256color
 # PATH management
 typeset -U path  # Keep unique entries
 path=(
-  "$HOME/.local/bin"
-  "$HOME/bin"
-  "/usr/local/bin"
-  $path
+    "$HOME/.local/bin"
+    "$HOME/bin"
+    "/usr/local/bin"
+    $path
 )
 export XDG_CONFIG_HOME="$HOME/.config"
 
@@ -49,8 +49,8 @@ ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git"
 
 # Download Zinit, if it's not there yet
 if [ ! -d "$ZINIT_HOME" ]; then
-   mkdir -p "$(dirname $ZINIT_HOME)"
-   git clone https://github.com/zdharma-continuum/zinit.git "$ZINIT_HOME"
+    mkdir -p "$(dirname $ZINIT_HOME)"
+    git clone https://github.com/zdharma-continuum/zinit.git "$ZINIT_HOME"
 fi
 source "${ZINIT_HOME}/zinit.zsh"
 
@@ -96,16 +96,16 @@ bindkey '^n' history-search-forward
 # mise
 # ------------------------------------------------------------
 if command -v mise >/dev/null 2>&1; then
-  eval "$(mise activate zsh)"
+    eval "$(mise activate zsh)"
 fi
 
 # ------------------------------------------------------------
 # FZF Configuration
 # ------------------------------------------------------------
 if command -v fd >/dev/null 2>&1; then
-  export FZF_DEFAULT_COMMAND='fd --type f --hidden --exclude .git'
+    export FZF_DEFAULT_COMMAND='fd --type f --hidden --exclude .git'
 else
-  export FZF_DEFAULT_COMMAND='find . -type f 2>/dev/null'
+    export FZF_DEFAULT_COMMAND='find . -type f 2>/dev/null'
 fi
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 
@@ -130,7 +130,7 @@ export FZF_ALT_C_OPTS="--preview 'tree -C {} | head -200'"
 export FZF_CTRL_T_OPTS="--preview 'bat --style=numbers --color=always {} 2>/dev/null || cat {}'"
 
 if command -v fzf >/dev/null 2>&1; then
-  source <(fzf --zsh)
+    source <(fzf --zsh)
 fi
 
 
@@ -144,14 +144,14 @@ alias t="tmux attach || tmux"
 
 # ls/eza aliases
 if command -v eza >/dev/null 2>&1; then
-  alias ls='eza --icons --group-directories-first'
-  alias ll='eza -lh --icons --group-directories-first'
-  alias la='eza -lah --icons --group-directories-first'
-  alias tree='eza --tree --icons'
+    alias ls='eza --icons --group-directories-first'
+    alias ll='eza -lh --icons --group-directories-first'
+    alias la='eza -lah --icons --group-directories-first'
+    alias tree='eza --tree --icons'
 else
-  alias ls='ls --color'
-  alias ll='ls -lh'
-  alias la='ls -lah'
+    alias ls='ls --color'
+    alias ll='ls -lh'
+    alias la='ls -lah'
 fi
 
 # Git aliases
@@ -187,7 +187,7 @@ command -v lazydocker >/dev/null 2>&1 && alias ld="lazydocker"
 command -v bat >/dev/null 2>&1 && alias cat='bat -pp'
 
 if command -v fzf >/dev/null 2>&1 && command -v bat >/dev/null 2>&1; then
-  alias ovi='nvim "$(fzf --preview="bat --style=numbers --color=always {}" --height=40% --reverse)"'
+    alias ovi='nvim "$(fzf --preview="bat --style=numbers --color=always {}" --height=40% --reverse)"'
 fi
 
 
@@ -196,81 +196,81 @@ fi
 # ------------------------------------------------------------
 # LazyGit with lock file handling
 lg() {
-  if ! command -v lazygit >/dev/null 2>&1; then
-    echo "lazygit not installed"
-    return 1
-  fi
-
-  local git_dir
-  git_dir=$(git rev-parse --git-dir 2>/dev/null)
-  if [[ $? -eq 0 ]]; then
-    local lock_file="${git_dir}/index.lock"
-    if [[ -f "$lock_file" ]]; then
-      echo "Removing stale lock file: $lock_file"
-      rm "$lock_file"
+    if ! command -v lazygit >/dev/null 2>&1; then
+        echo "lazygit not installed"
+        return 1
     fi
-  fi
-  command lazygit "$@"
+
+    local git_dir
+    git_dir=$(git rev-parse --git-dir 2>/dev/null)
+    if [[ $? -eq 0 ]]; then
+        local lock_file="${git_dir}/index.lock"
+        if [[ -f "$lock_file" ]]; then
+            echo "Removing stale lock file: $lock_file"
+            rm "$lock_file"
+        fi
+    fi
+    command lazygit "$@"
 }
 
 # Git diff with fzf preview
 gdiff() {
-  local preview_cmd
-  if command -v delta >/dev/null 2>&1; then
-    preview_cmd="git diff $@ --color=always -- {-1} | delta --side-by-side --width \${FZF_PREVIEW_COLUMNS:-100}"
-  else
-    preview_cmd="git diff $@ --color=always -- {-1}"
-  fi
-  git diff $@ --name-only | fzf -m --ansi --preview "$preview_cmd" \
-    --layout=reverse --height=100% --preview-window=down:90%
+    local preview_cmd
+    if command -v delta >/dev/null 2>&1; then
+        preview_cmd="git diff $@ --color=always -- {-1} | delta --side-by-side --width \${FZF_PREVIEW_COLUMNS:-100}"
+    else
+        preview_cmd="git diff $@ --color=always -- {-1}"
+    fi
+    git diff $@ --name-only | fzf -m --ansi --preview "$preview_cmd" \
+        --layout=reverse --height=100% --preview-window=down:90%
 }
 
 # CD to git root
 cdg() {
-  local root=$(git rev-parse --show-toplevel 2>/dev/null)
-  if [[ -n "$root" ]]; then
-    cd "$root"
-  else
-    echo "Not in a git repository"
-  fi
+    local root=$(git rev-parse --show-toplevel 2>/dev/null)
+    if [[ -n "$root" ]]; then
+        cd "$root"
+    else
+        echo "Not in a git repository"
+    fi
 }
 
 # Create directory and cd into it
 mkcd() {
-  mkdir -p "$1" && cd "$1"
+    mkdir -p "$1" && cd "$1"
 }
 
 # Extract various archive formats
 extract() {
-  if [ -f "$1" ]; then
-    case "$1" in
-      *.tar.bz2) tar xjf "$1" ;;
-      *.tar.gz)  tar xzf "$1" ;;
-      *.tar.xz)  tar xJf "$1" ;;
-      *.bz2)     bunzip2 "$1" ;;
-      *.gz)      gunzip "$1" ;;
-      *.tar)     tar xf "$1" ;;
-      *.tbz2)    tar xjf "$1" ;;
-      *.tgz)     tar xzf "$1" ;;
-      *.zip)     unzip "$1" ;;
-      *.Z)       uncompress "$1" ;;
-      *.7z)      7z x "$1" ;;
-      *.rar)     unrar x "$1" ;;
-      *)         echo "'$1' cannot be extracted via extract()" ;;
-    esac
-  else
-    echo "'$1' is not a valid file"
-  fi
+    if [ -f "$1" ]; then
+        case "$1" in
+            *.tar.bz2) tar xjf "$1" ;;
+            *.tar.gz)  tar xzf "$1" ;;
+            *.tar.xz)  tar xJf "$1" ;;
+            *.bz2)     bunzip2 "$1" ;;
+            *.gz)      gunzip "$1" ;;
+            *.tar)     tar xf "$1" ;;
+            *.tbz2)    tar xjf "$1" ;;
+            *.tgz)     tar xzf "$1" ;;
+            *.zip)     unzip "$1" ;;
+            *.Z)       uncompress "$1" ;;
+            *.7z)      7z x "$1" ;;
+            *.rar)     unrar x "$1" ;;
+            *)         echo "'$1' cannot be extracted via extract()" ;;
+        esac
+    else
+        echo "'$1' is not a valid file"
+    fi
 }
 
 # Fuzzy find and kill process
 fkill() {
-  local pid
-  pid=$(ps -ef | sed 1d | fzf -m --height=40% --layout=reverse --header='Select process to kill' --preview 'echo {}' --preview-window=down:3:wrap | awk '{print $2}')
-  if [ -n "$pid" ]; then
-    echo "$pid" | xargs kill -"${1:-9}"
-    echo "Killed process(es): $pid"
-  fi
+    local pid
+    pid=$(ps -ef | sed 1d | fzf -m --height=40% --layout=reverse --header='Select process to kill' --preview 'echo {}' --preview-window=down:3:wrap | awk '{print $2}')
+    if [ -n "$pid" ]; then
+        echo "$pid" | xargs kill -"${1:-9}"
+        echo "Killed process(es): $pid"
+    fi
 }
 
 # Quick project navigation (adjust path to your projects directory)
