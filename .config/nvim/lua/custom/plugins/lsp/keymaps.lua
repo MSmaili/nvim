@@ -26,7 +26,7 @@ return function(bufnr)
 			------------------------------
 			-- ["<leader>cr"] = { vim.lsp.buf.rename, desc = "Rename", buffer = bufnr },
 			-- ["<leader>ca"] = { vim.lsp.buf.code_action, desc = "Action", buffer = bufnr },
-			["<leader>cs"] = { "<cmd>FzfLua lsp_document_symbols<CR>", desc = "Document Symbols" },
+			["<leader>cS"] = { "<cmd>FzfLua lsp_document_symbols<CR>", desc = "Document Symbols" },
 			["<leader>ci"] = { "<cmd>FzfLua lsp_incoming_calls<CR>", desc = "List incoming calls (FZF)" },
 			["<leader>cd"] = { vim.diagnostic.open_float, desc = "Show diagnostics", buffer = bufnr },
 			------------------------------

@@ -14,7 +14,7 @@ return {
 			desc = "Open arrow picker",
 		},
 		{
-			"<leader>a",
+			"<leader>.",
 			function()
 				return require("arrow.persist").toggle()
 			end,

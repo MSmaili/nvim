@@ -1,7 +1,7 @@
 local M = {
 	"folke/which-key.nvim",
 	config = true,
-	keys = { { "<leader>" } },
+	lazy = false,
 	opts = {
 		win = {
 			border = "rounded",
