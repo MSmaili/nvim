@@ -11,6 +11,9 @@
 	light = false      # set to true if you're in a terminal w/ a light background color (e.g. the default macOS terminal)
 	side-by-side = true # this is better on large screen to be true, you see two viewes
 	line-numbers = true
+  file-style = omit
+  hunk-header-style = syntax
+  hunk-header-decoration-style = none
 
 [merge]
 	conflictstyle = zdiff3

@@ -29,7 +29,26 @@ return {
 			desc = "Find word in buffer",
 		},
 		{ "<leader>sb", "<cmd>FzfLua lgrep_curbuf<cr>", desc = "Find word in buffer" },
-		{ "<leader>sg", "<cmd>FzfLua git_status<cr>", desc = "Find word in buffer" },
+		{
+			"<leader>sg",
+			function()
+				require("fzf-lua").git_status({
+					winopts = {
+						fullscreen = true,
+						preview = {
+							layout = "vertical",
+							vertical = "down:95%",
+						},
+					},
+					fzf_opts = {
+						["--layout"] = "reverse",
+						["--info"] = "inline",
+					},
+					header = false,
+				})
+			end,
+			desc = "Git status with large preview",
+		},
 		{ "<leader>sw", "<cmd>FzfLua grep_visual<cr>", desc = "Grep", mode = "x" },
 		{
 			"<leader>of",
