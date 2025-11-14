@@ -1,0 +1,10 @@
+# macOS system files
+.DS_Store
+
+# Editor junk
+*.swp
+*.swo
+.idea/
+.vscode/
+*/.agent/
+**/.agent/

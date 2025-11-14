@@ -1,7 +1,7 @@
 [core]
 	editor = nvim
 	pager = delta
-	excludesFile = ~/.gitignore
+	excludesFile = ./ignore
 
 [interactive]
 	diffFilter = delta --color-only
@@ -16,7 +16,7 @@
   hunk-header-decoration-style = none
 
 [merge]
-	conflictstyle = zdiff3
+	conflictstyle = diff3
 
 [diff]
 	colorMoved = default
