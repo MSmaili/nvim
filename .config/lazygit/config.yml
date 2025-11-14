@@ -3,4 +3,4 @@ git:
     - pager: delta --dark --paging=never
       colorArg: always
 gui:
-  showCommandLog: true
+  showCommandLog: false

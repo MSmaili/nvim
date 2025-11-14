@@ -1,6 +1,3 @@
-[[ -n "$__ZSHRC_LOADED" ]] && return
-__ZSHRC_LOADED=1
-
 # ------------------------------------------------------------
 # Modular Configs
 # ------------------------------------------------------------
@@ -66,6 +63,7 @@ zinit ice compile'(pure|async).zsh' pick'async.zsh' src'pure.zsh'
 zinit light sindresorhus/pure            # Prompt
 zinit light Aloxaf/fzf-tab               # FZF tab completion
 zinit ice wait lucid atinit'zpcompinit; zpcdreplay'
+zinit snippet OMZ::plugins/git/git.plugin.zsh
 zinit light zsh-users/zsh-syntax-highlighting
 
 autoload -Uz compinit && compinit -C     # Caches completions
@@ -81,6 +79,10 @@ zstyle ':completion:*' cache-path "$HOME/.zsh/cache"
 # fzf-tab configuration
 zstyle ':fzf-tab:complete:cd:*' fzf-preview 'eza -1 --color=always $realpath 2>/dev/null || ls -1 $realpath'
 zstyle ':fzf-tab:*' fzf-flags --height=60%
+
+if command -v kubectl >/dev/null 2>&1; then
+    source <(kubectl completion zsh)
+fi
 
 # Load completions
 autoload -Uz compinit && compinit
@@ -144,7 +146,7 @@ alias t="tmux attach || tmux"
 
 #open btop if exists
 if command -v btop >/dev/null 2>&1; then
-  alias top="btop"
+    alias top="btop"
 fi
 
 # ls/eza aliases
@@ -159,17 +161,6 @@ else
     alias la='ls -lah'
 fi
 
-# Git aliases
-alias gs='git status -sb'
-alias ga='git add'
-alias gc='git commit'
-alias gp='git push'
-alias gl='git pull'
-alias gco='git checkout'
-alias gb='git branch'
-alias glog='git log --oneline --graph --decorate --all'
-alias gpro='git pull --rebase origin'
-
 # Docker aliases
 alias dps='docker ps --format "table {{.Names}}\t{{.Status}}\t{{.Ports}}"'
 alias dcu='docker compose up -d'
@@ -178,10 +169,11 @@ alias dcl='docker compose logs -f'
 
 # Kubernetes aliases
 alias k='kubectl'
-alias kgp='kubectl get pods'
-alias kgs='kubectl get svc'
-alias kgd='kubectl get deployments'
+alias kgp='kubectl get pods | fzf'
+alias kgs='kubectl get svc | fzf'
+alias kgd='kubectl get deployments | fzf'
 alias kl='kubectl logs -f'
+alias kpf='kubectl port-forward'
 
 # Hash directories for quick movement
 hash -d dotfiles="$HOME/dotfiles"
@@ -277,7 +269,3 @@ fkill() {
         echo "Killed process(es): $pid"
     fi
 }
-
-# Quick project navigation (adjust path to your projects directory)
-export PROJECTS="$HOME/projects"
-alias p='cd $PROJECTS'

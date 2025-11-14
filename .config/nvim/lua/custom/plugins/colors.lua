@@ -178,10 +178,15 @@ return {
 		end,
 	},
 	{
-		{
-			"abhilash26/mapledark.nvim",
-			lazy = false,
-			opts = {},
+		"abhilash26/mapledark.nvim",
+		lazy = false,
+		opts = {},
+	},
+	{
+		"folke/tokyonight.nvim",
+		lazy = false,
+		opts = {
+			transparent = Custom.colorscheme.transparent,
 		},
 	},
 }
