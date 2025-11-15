@@ -6,5 +6,6 @@
 *.swo
 .idea/
 .vscode/
+.agent/
 */.agent/
 **/.agent/
