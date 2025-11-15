@@ -33,16 +33,3 @@ export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 if command -v fzf >/dev/null 2>&1; then
     source <(fzf --zsh)
 fi
-
-ovi() {
-    local file
-    file=$(fzf --preview="bat --style=numbers --color=always {}" --height=40% --reverse)
-    [[ -n "$file" ]] && nvim "$file"
-}
-
-fzg() {
-    local file
-    file=$(git ls-files --cached --others --exclude-standard 2>/dev/null | \
-        fzf --preview="bat --style=numbers --color=always {}" --height=50%)
-    [[ -n "$file" ]] && nvim "$file"
-}

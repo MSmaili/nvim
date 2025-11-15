@@ -73,6 +73,7 @@ extract() {
 
 # Fuzzy find and kill process
 fkill() {
+    command -v fzf >/dev/null 2>&1 || { echo "Install fzf first!"; exit 1; }
     local pid
     pid=$(ps -ef | sed 1d | fzf -m --height=60% --layout=reverse \
             --header='Select process to kill' \
@@ -83,4 +84,11 @@ fkill() {
         echo "$pid" | xargs kill -"${1:-9}"
         echo "Killed process(es): $pid"
     fi
+}
+
+ovi() {
+    command -v fzf >/dev/null 2>&1 || { echo "Install fzf first!"; exit 1; }
+    local file
+    file=$(fzf --preview="bat --style=numbers --color=always {}" --height=40% --reverse)
+    [[ -n "$file" ]] && nvim "$file"
 }
