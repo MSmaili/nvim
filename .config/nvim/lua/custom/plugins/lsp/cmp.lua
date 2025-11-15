@@ -56,7 +56,10 @@ return {
 				},
 			},
 			menu = {
-				auto_show = true,
+				-- auto_show = true,
+				auto_show = function()
+					return vim.bo.filetype ~= "markdown"
+				end,
 				border = "rounded",
 				-- mini icons text
 				draw = {
