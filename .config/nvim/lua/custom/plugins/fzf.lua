@@ -199,6 +199,9 @@ return {
 					preview = { hidden = true },
 				},
 			},
+			grep = {
+				hidden = true,
+			},
 			previewers = {
 				codeaction = { toggle_behavior = "extend" },
 			},
