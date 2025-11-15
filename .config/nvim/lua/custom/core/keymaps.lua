@@ -43,6 +43,9 @@ M.keyMaps = {
 		-- Toggle spellchker
 		["<leader>us"] = { ":setlocal spell!<CR>", desc = "Toggle spellchker" },
 
+		-- toggle transparentcy
+		["<leader>ut"] = { ":ToggleTransparency<CR>", desc = "Toggle transparent theme" },
+
 		-- Toggle pastemode
 		["<leader>up"] = { ":setlocal paste!<CR>", desc = "Toggle paste mode" },
 		["<leader>uf"] = {

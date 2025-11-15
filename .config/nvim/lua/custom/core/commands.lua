@@ -55,11 +55,36 @@ autocmd("VimEnter", {
 	group = smailiGroup,
 	desc = "Set custom colorscheme",
 	callback = function()
-		vim.defer_fn(function()
-			local theme = Custom.get_colorscheme(Custom.colorscheme.name)
-			Custom.apply_colorscheme(theme)
-		end, 50)
+		Custom.theme.apply(Custom.colorscheme.name)
 	end,
+})
+
+-- User commands for theme management
+vim.api.nvim_create_user_command("ToggleTransparency", Custom.theme.toggle_transparency, {
+	desc = "Toggle colorscheme transparency",
+})
+
+vim.api.nvim_create_user_command("ThemeStatus", function()
+	local settings_file = vim.fn.stdpath("data") .. "/custom_settings.json"
+	local saved = Custom.state.load("theme", {})
+
+	local lines = {
+		"Theme Status:",
+		"",
+		"Current (in-memory):",
+		"  Name: " .. Custom.colorscheme.name,
+		"  Transparent: " .. tostring(Custom.colorscheme.transparent),
+		"",
+		"Saved (on disk):",
+		"  Name: " .. (saved.name or "none"),
+		"  Transparent: " .. tostring(saved.transparent),
+		"",
+		"Settings file: " .. settings_file,
+	}
+
+	vim.notify(table.concat(lines, "\n"), vim.log.levels.INFO)
+end, {
+	desc = "Show theme status and settings",
 })
 
 -- open help in vertical split

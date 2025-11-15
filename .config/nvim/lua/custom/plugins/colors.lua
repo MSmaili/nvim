@@ -6,56 +6,37 @@ return {
 		"sainnhe/everforest",
 		lazy = false,
 		opts = {},
-		config = function()
-			if Custom.colorscheme.transparent then
-				vim.cmd("let g:everforest_transparent_background = 1")
-			end
-		end,
 	},
 	{
 		"loctvl842/monokai-pro.nvim",
 		lazy = false,
-		opts = {
-			transparent_background = Custom.colorscheme.transparent,
-		},
+		opts = {},
 	},
 	{
 		"webhooked/kanso.nvim",
 		lazy = false,
-		opts = {
-			transparent = Custom.colorscheme.transparent,
-		},
+		opts = {},
 	},
 	{
 		"sho-87/kanagawa-paper.nvim",
 		lazy = false,
-		opts = {
-			transparent = Custom.colorscheme.transparent,
-		},
+		opts = {},
 	},
 	{
 		"datsfilipe/vesper.nvim",
-		opts = {
-			transparent = Custom.colorscheme.transparent,
-		},
+		opts = {},
 		lazy = false,
 	},
 	{
 		"olivercederborg/poimandres.nvim",
 		lazy = false,
-		opts = {
-			disable_background = Custom.colorscheme.transparent,
-		},
+		opts = {},
 	},
 	{
 		"sainnhe/gruvbox-material",
 		opts = {},
 		config = function()
 			vim.cmd("let g:gruvbox_material_background = 'hard'")
-
-			if Custom.colorscheme.transparent then
-				vim.cmd("let g:gruvbox_material_transparent_background = 1")
-			end
 		end,
 	},
 	{
@@ -63,9 +44,6 @@ return {
 		name = "rose-pine",
 		lazy = false,
 		opts = {
-			styles = {
-				transparency = Custom.colorscheme.transparent,
-			},
 			before_highlight = function(_, highlight)
 				if highlight.undercurl then
 					highlight.undercurl = false
@@ -83,11 +61,6 @@ return {
 	},
 	{
 		"sainnhe/sonokai",
-		config = function()
-			if Custom.colorscheme.transparent then
-				vim.cmd("let g:sonokai_transparent_background = 1")
-			end
-		end,
 		opts = {},
 	},
 	{
@@ -136,10 +109,7 @@ return {
 				},
 				mini = { enabled = true },
 			},
-			transparent_background = Custom.colorscheme.transparent,
-			styles = {
-				-- keywords = { "italic" },
-			},
+			styles = {},
 			highlight_overrides = {
 				all = function(_)
 					return {
@@ -152,15 +122,12 @@ return {
 	{
 		"vague2k/vague.nvim",
 		lazy = false,
-		opts = {
-			transparent = Custom.colorscheme.transparent,
-		},
+		opts = {},
 	},
 	{
 		"wtfox/jellybeans.nvim",
 		lazy = false,
 		opts = {
-			transparent = Custom.colorscheme.transparent,
 			italics = true,
 			plugins = {
 				all = true,
@@ -171,11 +138,7 @@ return {
 	{
 		"KijitoraFinch/nanode.nvim",
 		lazy = false,
-		config = function()
-			require("nanode").setup({
-				transparent = Custom.colorscheme.transparent,
-			})
-		end,
+		opts = {},
 	},
 	{
 		"abhilash26/mapledark.nvim",
@@ -185,8 +148,6 @@ return {
 	{
 		"folke/tokyonight.nvim",
 		lazy = false,
-		opts = {
-			transparent = Custom.colorscheme.transparent,
-		},
+		opts = {},
 	},
 }

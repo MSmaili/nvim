@@ -24,7 +24,7 @@ require("lazy").setup({
 	{ import = "custom.plugins.lsp.cmp" },
 }, {
 	defaults = { lazy = true },
-	install = { colorscheme = { Custom.get_colorscheme(Custom.colorscheme.name) } },
+	install = { colorscheme = { Custom.colorscheme.name or "default" } },
 	checker = { enabled = false },
 	change_detection = { notify = false },
 	ui = { border = "rounded" },

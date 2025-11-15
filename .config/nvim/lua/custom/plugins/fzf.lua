@@ -77,7 +77,7 @@ return {
 					actions = {
 						["default"] = function(selected)
 							local theme = selected[1]
-							Custom.save_colorscheme(theme)
+							Custom.theme.apply(theme, Custom.colorscheme.transparent)
 						end,
 					},
 				})
