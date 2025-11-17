@@ -34,6 +34,7 @@ return {
 			"javascript",
 			"typescript",
 			"tsx",
+			"tmux",
 			"lua",
 			"jsdoc",
 			"json",
