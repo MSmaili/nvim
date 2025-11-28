@@ -7,6 +7,9 @@ return {
 				backend = "tmux",
 				enabled = true,
 			},
+			tools = {
+				amazon_q = { cmd = { "kiro-cli" } },
+			},
 		},
 		prompts = {
 			picker = "fzf-lua",

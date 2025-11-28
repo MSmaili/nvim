@@ -1,3 +1,5 @@
+# # Kiro CLI pre block. Keep at the top of this file.
+# [[ -f "${HOME}/Library/Application Support/kiro-cli/shell/zshrc.pre.zsh" ]] && builtin source "${HOME}/Library/Application Support/kiro-cli/shell/zshrc.pre.zsh"
 # PATH management
 typeset -U path  # Keep unique entries
 path=(
@@ -36,8 +38,8 @@ setopt hist_find_no_dups   # ignore duplicates during search
 setopt hist_reduce_blanks  # remove extra blanks
 HISTDUP=erase              # optional, reinforce duplicate removal
 
-# When deleting with <C-w>, delete file names at a time
-WORDCHARS=${WORDCHARS/\/}
+# Remove slash, equals, and hyphen from WORDCHARS
+WORDCHARS="${WORDCHARS//[\/=\-]/}"
 
 # Basic environment
 export EDITOR=nvim
@@ -167,3 +169,6 @@ hash -d nvim="$HOME/.config/nvim"
 # Conditional aliases
 command -v lazydocker >/dev/null 2>&1 && alias ld="lazydocker"
 command -v bat >/dev/null 2>&1 && alias cat='bat -pp'
+
+# # Kiro CLI post block. Keep at the bottom of this file.
+# [[ -f "${HOME}/Library/Application Support/kiro-cli/shell/zshrc.post.zsh" ]] && builtin source "${HOME}/Library/Application Support/kiro-cli/shell/zshrc.post.zsh"

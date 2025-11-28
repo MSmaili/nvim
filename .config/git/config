@@ -1,7 +1,7 @@
 [core]
 	editor = nvim
 	pager = delta
-	excludesFile = ./ignore
+	excludesFile = ~/.config/git/ignore
 
 [interactive]
 	diffFilter = delta --color-only
