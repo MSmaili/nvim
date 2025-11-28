@@ -1,10 +1,24 @@
 #!/usr/bin/env bash
 
+# Run command with dry-run support
+run_cmd() {
+    if ${DRY_RUN:-false}; then
+        echo "[DRY RUN] $*"
+    else
+        "$@"
+    fi
+}
+
 # Reusable prompt function that returns 0 for yes, 1 for no
 # Usage: if ask_yes_no "Install something?"; then ... fi
 ask_yes_no() {
     local message="$1"
     local default="${2:-N}"  # Default to N if not specified
+
+    if ${DRY_RUN:-false}; then
+        echo "[DRY RUN] Would prompt: $message"
+        return 0
+    fi
 
     if [[ "$default" == "Y" ]]; then
         local prompt="$message (Y/n): "

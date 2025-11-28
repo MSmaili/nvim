@@ -21,11 +21,11 @@ install_zsh() {
 
     # Add zsh to /etc/shells if not already there
     if ! grep -q "^$ZSH_PATH$" /etc/shells; then
-        echo "$ZSH_PATH" | sudo tee -a /etc/shells >/dev/null
+        run_cmd sudo tee -a /etc/shells >/dev/null <<< "$ZSH_PATH"
     fi
 
     # Change the default shell to zsh
-    chsh -s "$ZSH_PATH"
+    run_cmd chsh -s "$ZSH_PATH"
 
     echo "Zsh configuration complete!"
 }

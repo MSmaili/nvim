@@ -7,7 +7,7 @@ source "$BASE_DIR/helpers/zsh.sh"
 source "$BASE_DIR/helpers/tmux.sh"
 source "$BASE_DIR/helpers/mise.sh"
 
-mkdir -p ~/.config/zsh ~/.config/tmux
+run_cmd mkdir -p ~/.config/zsh ~/.config/tmux
 
 install_zsh
 install_tmux_plugins
@@ -20,8 +20,7 @@ fi
 if has stow; then
     echo "🔗 Linking dotfiles..."
     cd "$BASE_DIR/.."
-    # Stow everything except ignored files (see .stow-local-ignore)
-    stow -vSt "$HOME" . 2>/dev/null || echo "⚠️ Some files already linked"
+    run_cmd stow -vSt "$HOME" .
 else
     echo "⚠️ stow not installed, skipping linking."
 fi

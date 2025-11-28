@@ -3,8 +3,9 @@ set -e
 
 echo "🐧 Ubuntu setup..."
 BASE_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+source "$BASE_DIR/helpers/prompt.sh"
 
-sudo apt update
-sudo apt install -y git curl stow zsh tmux fzf
+run_cmd sudo apt update
+run_cmd sudo apt install -y git curl stow zsh tmux fzf
 
 bash "$BASE_DIR/common.sh"

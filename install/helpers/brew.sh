@@ -23,7 +23,7 @@ brew_bundle_install() {
     local file="$1"
     if has brew; then
         echo "📋 Installing packages from Brewfile..."
-        brew bundle --file="$file"
+        run_cmd brew bundle --file="$file"
     else
         skip_with_message "Skipping Brewfile installation (Homebrew not available)."
     fi

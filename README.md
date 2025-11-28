@@ -16,6 +16,12 @@ cd ~/dotfiles
 ./install.sh
 ```
 
+To preview what will be installed without making changes:
+
+```bash
+./install.sh --dry-run
+```
+
 ## Supported Platforms
 
 - **macOS** - Homebrew + GUI apps

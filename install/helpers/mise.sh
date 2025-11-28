@@ -8,7 +8,7 @@ install_mise_languages() {
     if ! has mise; then
         echo "📦 Installing mise..."
         echo "⚠️ This will download and execute the mise installer"
-        curl -fsSL https://mise.run | sh
+        run_cmd curl -fsSL https://mise.run | sh
         export PATH="$HOME/.local/bin:$PATH"
     else
         shell_name=$(ps -p $$ -o comm= 2>/dev/null | tail -n1 || echo bash)
@@ -19,13 +19,13 @@ install_mise_languages() {
         if has_file "$HOME/.config/mise/config.toml"; then
             if ! mise trust --check "$HOME/.config/mise/config.toml" &>/dev/null; then
                 echo "🔐 Trusting mise config..."
-                mise trust "$HOME/.config/mise/config.toml" >/dev/null 2>&1
+                run_cmd mise trust "$HOME/.config/mise/config.toml" >/dev/null 2>&1
             fi
         fi
     fi
 
     echo "Installing languages defined in mise config..."
-    mise install
+    run_cmd mise install
 
     echo "✅ mise languages installation complete."
 }
