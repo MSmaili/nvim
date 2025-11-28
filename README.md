@@ -97,4 +97,26 @@ tmux_init
 
 This will automatically create tmux sessions based on the configuration in `~/.tmux-session.json`.
 
-You will have also a simple tmux-session switcher
+You will also have a simple tmux-session switcher available.
+
+---
+
+## Local Configuration
+
+Some files are gitignored for personal settings:
+
+**`.zshrc.local`** - Personal shell config (sourced by `.zshrc`)
+
+```bash
+# Example: Add personal paths, API keys, work-specific aliases
+export WORK_DIR="$HOME/work"
+```
+
+**`.config/git/config.local`** - Personal git config (included by `.config/git/config`)
+
+```bash
+[user]
+    name = Your Name
+    email = your.email@example.com
+    signingkey = YOUR_GPG_KEY
+```
