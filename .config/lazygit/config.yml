@@ -1,0 +1,6 @@
+git:
+  pagers:
+    - pager: delta --dark --paging=never
+      colorArg: always
+gui:
+  showCommandLog: false

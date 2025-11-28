@@ -1,1 +1,5 @@
-lua/user/
+# SSH private hosts
+.ssh/hosts
+.config/git/config.local
+.config/tmux/plugins
+.zshrc.local

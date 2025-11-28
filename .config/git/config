@@ -1,0 +1,32 @@
+[core]
+	editor = nvim
+	pager = delta
+	excludesFile = ./ignore
+
+[interactive]
+	diffFilter = delta --color-only
+
+[delta]
+	navigate = true    # use n and N to move between diff sections
+	light = false      # set to true if you're in a terminal w/ a light background color (e.g. the default macOS terminal)
+	side-by-side = true # this is better on large screen to be true, you see two viewes
+	line-numbers = true
+  file-style = omit
+  hunk-header-style = syntax
+  hunk-header-decoration-style = none
+
+[merge]
+	conflictstyle = diff3
+
+[diff]
+	colorMoved = default
+
+[alias]
+	diff-words = diff --color-words='[^[:space:]]|([[:alnum:]]|UTF_8_GUARD)+
+	count-lines = "! git log --author=\"$1\" --pretty=tformat: --numstat | awk '{ add += $1; subs += $2; loc += $1 - $2 } END { printf \"added lines: %s, removed lines: %s, total lines: %s\\n\", add, subs, loc }' #"
+[rerere]
+	enabled = true
+[branch]
+	sort = -committerdate
+[include]
+  path = ./config.local
