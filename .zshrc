@@ -1,5 +1,3 @@
-# # Kiro CLI pre block. Keep at the top of this file.
-# [[ -f "${HOME}/Library/Application Support/kiro-cli/shell/zshrc.pre.zsh" ]] && builtin source "${HOME}/Library/Application Support/kiro-cli/shell/zshrc.pre.zsh"
 # PATH management
 typeset -U path  # Keep unique entries
 path=(
@@ -36,7 +34,6 @@ setopt hist_ignore_space   # ignore commands starting with space
 setopt hist_ignore_dups    # ignore all duplicates
 setopt hist_find_no_dups   # ignore duplicates during search
 setopt hist_reduce_blanks  # remove extra blanks
-HISTDUP=erase              # optional, reinforce duplicate removal
 
 # Remove slash, equals, and hyphen from WORDCHARS
 WORDCHARS="${WORDCHARS//[\/=\-]/}"
@@ -97,7 +94,7 @@ for file in ~/.config/zsh/*.zsh(N); do
     [[ -r "$file" ]] && source "$file"
 done
 
-# Completion styles (BEFORE compinit)
+# Completion styles
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
 zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
 zstyle ':completion:*' menu select
@@ -106,9 +103,13 @@ zstyle ':completion:*' cache-path "$HOME/.zsh/cache"
 zstyle ':fzf-tab:complete:cd:*' fzf-preview 'eza -1 --color=always $realpath 2>/dev/null || ls -1 $realpath'
 zstyle ':fzf-tab:*' fzf-flags --height=60%
 
-# Load external completions
+# Lazy-load kubectl completion
 if command -v kubectl >/dev/null 2>&1; then
-    source <(kubectl completion zsh)
+    kubectl() {
+        unfunction kubectl
+        source <(command kubectl completion zsh)
+        kubectl "$@"
+    }
 fi
 
 # Keybindings
@@ -169,6 +170,3 @@ hash -d nvim="$HOME/.config/nvim"
 # Conditional aliases
 command -v lazydocker >/dev/null 2>&1 && alias ld="lazydocker"
 command -v bat >/dev/null 2>&1 && alias cat='bat -pp'
-
-# # Kiro CLI post block. Keep at the bottom of this file.
-# [[ -f "${HOME}/Library/Application Support/kiro-cli/shell/zshrc.post.zsh" ]] && builtin source "${HOME}/Library/Application Support/kiro-cli/shell/zshrc.post.zsh"
