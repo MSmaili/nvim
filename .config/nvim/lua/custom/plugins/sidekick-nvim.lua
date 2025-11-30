@@ -19,7 +19,7 @@ return {
 		{
 			"<leader>aa",
 			function()
-				require("sidekick.cli").toggle({ name = "amazon_q", focus = true })
+				require("sidekick.cli").toggle()
 				-- require("sidekick.cli").toggle()
 			end,
 			desc = "Sidekick Toggle CLI (amazon_q)",
