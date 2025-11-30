@@ -34,6 +34,16 @@ run_cmd defaults write com.apple.finder ShowStatusBar -bool true
 # Show all file extensions
 run_cmd defaults write NSGlobalDomain AppleShowAllExtensions -bool true
 
+# Show full POSIX path in Finder title bar
+run_cmd defaults write com.apple.finder _FXShowPosixPathInTitle -bool false
+
+# Disable .DS_Store files on network & USB volumes
+run_cmd defaults write com.apple.desktopservices DSDontWriteNetworkStores -bool true
+run_cmd defaults write com.apple.desktopservices DSDontWriteUSBStores -bool true
+
+# Set list view as the default view
+run_cmd defaults write com.apple.finder FXPreferredViewStyle -string "Nlsv"
+
 # Keep folders on top when sorting by name
 run_cmd defaults write com.apple.finder _FXSortFoldersFirst -bool true
 # Search current folder by default
@@ -49,7 +59,7 @@ run_cmd defaults write com.apple.dock autohide-delay -float 0
 run_cmd defaults write com.apple.dock autohide-time-modifier -float 0.3
 
 # Minimize windows into app icon
-run_cmd defaults write com.apple.dock minimize-to-application -bool true
+run_cmd defaults write com.apple.dock minimize-to-application -bool false
 
 
 ###############################################################################
