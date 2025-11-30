@@ -1,0 +1,138 @@
+{
+  "actions": [
+    {
+      "key": "t",
+      "label": "Ghostty",
+      "type": "application",
+      "value": "/Applications/Ghostty.app"
+    },
+    {
+      "key": "b",
+      "label": "Brave",
+      "type": "application",
+      "value": "/Applications/Brave Browser.app"
+    },
+    {
+      "actions": [
+        {
+          "key": "t",
+          "label": "Teams",
+          "type": "application",
+          "value": "/Applications/Teams.app"
+        },
+        {
+          "key": "c",
+          "label": "ChatGPT",
+          "type": "command",
+          "value": "osascript ~/.config/leaderkey/brave.scpt https://chatgpt.com/?temporary-chat=true"
+        },
+        {
+          "key": "m",
+          "label": "Finder",
+          "type": "application",
+          "value": "/Applications/Thunderbird.app"
+        },
+        {
+          "key": "f",
+          "label": "Finder",
+          "type": "application",
+          "value": "/System/Library/CoreServices/Finder.app"
+        }
+      ],
+      "key": "o",
+      "label": "Open (Apps)",
+      "type": "group"
+    },
+    {
+      "actions": [
+        {
+          "key": "a",
+          "type": "command",
+          "value": "open shottr://grab/area"
+        },
+        {
+          "key": "o",
+          "type": "command",
+          "value": "open shottr://ocr"
+        },
+        {
+          "key": "w",
+          "type": "command",
+          "value": "open shottr://grab/window"
+        },
+        {
+          "key": "f",
+          "type": "command",
+          "value": "open shottr://grab/fullscreen"
+        },
+        {
+          "key": "s",
+          "type": "command",
+          "value": "open shottr://grab/scrolling"
+        }
+      ],
+      "key": "s",
+      "label": "Screenshot",
+      "type": "group"
+    },
+    {
+      "actions": [
+        {
+          "key": "h",
+          "label": "Join left",
+          "type": "command",
+          "value": "/opt/homebrew/bin/aerospace join-with left"
+        },
+        {
+          "key": "j",
+          "label": "Join down",
+          "type": "command",
+          "value": "/opt/homebrew/bin/aerospace join-with down"
+        },
+        {
+          "key": "k",
+          "label": "Join up",
+          "type": "command",
+          "value": "/opt/homebrew/bin/aerospace join-with up"
+        },
+        {
+          "key": "l",
+          "label": "Floating Toggle",
+          "type": "command",
+          "value": "/opt/homebrew/bin/aerospace join-with right"
+        }
+      ],
+      "key": "w",
+      "label": "Window",
+      "type": "group"
+    },
+    {
+      "actions": [
+        {
+          "key": "o",
+          "type": "application",
+          "value": "/System/Library/CoreServices/Finder.app"
+        },
+        {
+          "key": "d",
+          "type": "folder",
+          "value": "~/Downloads"
+        },
+        {
+          "key": "D",
+          "type": "folder",
+          "value": "~/Desktop"
+        },
+        {
+          "key": "m",
+          "type": "folder",
+          "value": "~/data"
+        }
+      ],
+      "key": "f",
+      "label": "Finder",
+      "type": "group"
+    }
+  ],
+  "type": "group"
+}
