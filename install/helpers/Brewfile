@@ -17,3 +17,4 @@ brew "tree-sitter"
 # GUI applications
 cask "ghostty"
 cask "nikitabobko/tap/aerospace"
+cask "leader-key"
